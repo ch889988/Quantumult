@@ -24,9 +24,8 @@ const message = {
   action: "get_policy_state",
   content: $environment.params
 };
-
-;(async () => {
-  let [{ region, status }] = await Promise.all([testChatGPT()])
+(async () => {
+  let [{ region, status }] = Promise.all([testChatGPT()])
 
   let content = "------------------------------"+"</br>"+(result["ChatGPT"]).join("</br></br>")
   content = content + "</br>------------------------------</br>"+"<font color=#CD5C5C >"+"<b>节点</b> ➟ " + $environment.params+ "</font>"
