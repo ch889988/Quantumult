@@ -1,7 +1,5 @@
-
 const BASE_URL_GPT = 'https://chat.openai.com/'
 const Region_URL_GPT = 'https://chat.openai.com/cdn-cgi/trace'
-
 
 const arrow = " ➟ "
 
