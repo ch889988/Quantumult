@@ -3,18 +3,6 @@ const Region_URL_GPT = 'https://chat.openai.com/cdn-cgi/trace'
 
 const arrow = " ➟ "
 
-
-// 即将登陆
-const STATUS_COMING = 2
-// 支持解锁
-const STATUS_AVAILABLE = 1
-// 不支持解锁
-const STATUS_NOT_AVAILABLE = 0
-// 检测超时
-const STATUS_TIMEOUT = -1
-// 检测异常
-const STATUS_ERROR = -2
-
 var opts = {
   policy: $environment.params
 };
@@ -39,16 +27,6 @@ const message = {
 
 (async () => {
   let [{ region, status }] = await Promise.all([testChatGPT()])
-  if (status==STATUS_COMING) {
-    result["Disney"] = "<b>Disneyᐩ:</b> 即将登陆 ➟ "+'⟦'+flags.get(region.toUpperCase())+"⟧ ⚠️"
-  } else if (status==STATUS_AVAILABLE){
-    result["Disney"] = "<b>Disneyᐩ:</b> 支持 ➟ "+'⟦'+flags.get(region.toUpperCase())+"⟧ 🎉"
-  } else if (status==STATUS_NOT_AVAILABLE) {
-    result["Disney"] = "<b>Disneyᐩ:</b> 未支持 🚫 "
-  } else if (status==STATUS_TIMEOUT) {
-    result["Disney"] = "<b>Disneyᐩ:</b> 检测超时 🚦 "
-  }
-
   let content = "------------------------------"+"</br>"+([result["ChatGPT"]]).join("</br></br>")
   content = content + "</br>------------------------------</br>"+"<font color=#CD5C5C >"+"<b>节点</b> ➟ " + $environment.params+ "</font>"
   content =`<p style="text-align: center; font-family: -apple-system; font-size: large; font-weight: thin">` + content + `</p>`
