@@ -4,6 +4,8 @@ const Region_URL_GPT = 'https://chat.openai.com/cdn-cgi/trace'
 
 const arrow = " ➟ "
 
+console.log("3333333333")
+
 var opts = {
   policy: $environment.params
 };
@@ -19,7 +21,8 @@ var flags = new Map([[ "AC" , "🇦🇨" ] ,["AE","🇦🇪"], [ "AF" , "🇦�
 let result = {
   "title": '    🤖️ ChatGpt解锁查询',
   "ChatGpt" : "<b>ChatGpt🤖️: </b>检测失败，请重试 ❗️"
-}
+};
+console.log("444444444444")
 const message = {
   action: "get_policy_state",
   content: $environment.params
