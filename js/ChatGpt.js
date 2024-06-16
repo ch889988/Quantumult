@@ -93,6 +93,7 @@ function testChatGPT() {
     }
     $task.fetch(option).then(response=> {
       let resp = JSON.stringify(response)
+      console.log("ChatGPT Main Test")
       let jdg = resp.indexOf("text/plain")
       if(jdg == -1) {
       let option1 = {
@@ -101,26 +102,31 @@ function testChatGPT() {
         timeout: 3000,
       }
       $task.fetch(option1).then(response=> {
+        console.log("ChatGPT Region Test")
         let region = response.body.split("loc=")[1].split("\n")[0]
+        console.log("ChatGPT Region: "+region)
         let res = support_countryCodes.indexOf(region)
         if (res != -1) {
-          result["ChatGpt"] = "<b>ChatGpt🤖️: </b>支持 "+arrow+ "⟦"+flags.get(region.toUpperCase())+"⟧ 🎉"
-          resolve("支持 ChatGpt")
+          result["ChatGPT"] = "<b>ChatGPT: </b>支持 "+arrow+ "⟦"+flags.get(region.toUpperCase())+"⟧ 🎉"
+          console.log("支持 ChatGPT")
+          resolve("支持 ChatGPT")
           return
         } else {
-          result["ChatGpt"] = "<b>ChatGpt🤖️: </b>未支持 🚫"
-          resolve("不支持 ChatGpt")
+          result["ChatGPT"] = "<b>ChatGPT: </b>未支持 🚫"
+          console.log("不支持 ChatGPT")
+          resolve("不支持 ChatGPT")
           return
         }
       }, reason => {
         console.log("Check-Error"+reason)
-        resolve("ChatGpt failed")
+        resolve("ChatGPT failed")
       })
     } else {
-      result["ChatGpt"] = "<b>ChatGpt🤖️: </b>未支持 🚫"
-      resolve("不支持 ChatGpt")
+      result["ChatGPT"] = "<b>ChatGPT: </b>未支持 🚫"
+      console.log("不支持 ChatGPT")
+      resolve("不支持 ChatGPT")
     }
     }, reason => {
-      console.log("ChatGpt-Error"+reason)
-      resolve("ChatGpt failed")
+      console.log("ChatGPT-Error"+reason)
+      resolve("ChatGPT failed")
     })})}
